@@ -101,4 +101,44 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowRight') showImage(currentIndex + 1);
     });
   }
+
+  // --- Hamburger Menu (Mobile View) ---
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const navMenu = document.getElementById('navMenu');
+
+  if (hamburgerBtn && navMenu) {
+    hamburgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isActive = hamburgerBtn.classList.toggle('active');
+      navMenu.classList.toggle('active', isActive);
+      hamburgerBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    });
+
+    // Close when clicking any nav link
+    navMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        navMenu.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        hamburgerBtn.classList.remove('active');
+        navMenu.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        hamburgerBtn.classList.remove('active');
+        navMenu.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 });
