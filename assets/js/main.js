@@ -4,7 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Contact Form Submission ---
+  // --- Contact Form Submission & WhatsApp Redirection ---
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
 
@@ -12,25 +12,38 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('name')?.value || '';
+      const name = document.getElementById('name')?.value.trim() || '';
+      const contact = document.getElementById('email')?.value.trim() || '';
+      const message = document.getElementById('message')?.value.trim() || '';
+
       const submitBtn = contactForm.querySelector('button[type="submit"]');
 
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.textContent = 'Opening WhatsApp...';
       }
+
+      // Format WhatsApp pre-filled message
+      const text = encodeURIComponent(
+        `Hello Veerabhadri Sir,\n\nName: ${name}\nContact: ${contact}\nMessage: ${message}`
+      );
+      const whatsappNumber = '919632645625';
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${text}`;
 
       setTimeout(() => {
         contactForm.reset();
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
+          submitBtn.textContent = 'Send via WhatsApp →';
         }
         if (formSuccess) {
           formSuccess.style.display = 'block';
-          formSuccess.innerHTML = `Thank you, <strong>${name}</strong>! Your message has been received. You can also reach out directly via WhatsApp for a quicker reply.`;
+          formSuccess.innerHTML = `Redirecting to WhatsApp... If it didn't open automatically, <a href="${whatsappUrl}" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 700; text-decoration: underline;">click here to send via WhatsApp</a>.`;
         }
-      }, 600);
+
+        // Redirect / Open WhatsApp
+        window.open(whatsappUrl, '_blank');
+      }, 400);
     });
   }
 
