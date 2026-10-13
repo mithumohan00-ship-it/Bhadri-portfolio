@@ -1,10 +1,44 @@
 /**
- * Veerabhadri (Bhadri) - Portfolio Scripts
- * Handles contact form and gallery lightbox cleanly on all pages.
+ * Veerabhadra S (Veerabhadri / Bhadri) - Portfolio Scripts
+ * Editorial Monochromatic Architecture & Interactive Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Contact Form Submission & WhatsApp Redirection ---
+  // =========================================================================
+  // 1. Dark Theme Enforcer (Default Theme)
+  // =========================================================================
+  document.documentElement.classList.add('dark');
+  localStorage.setItem('theme', 'dark');
+
+
+
+  // =========================================================================
+  // 3. Curated Photo Carousel Navigation
+  // =========================================================================
+  const carouselStrip = document.getElementById('carouselStrip');
+  const carouselPrevBtn = document.getElementById('carouselPrev');
+  const carouselNextBtn = document.getElementById('carouselNext');
+
+  if (carouselStrip && carouselPrevBtn && carouselNextBtn) {
+    const scrollStep = () => {
+      const firstCard = carouselStrip.querySelector('.carousel-card');
+      return firstCard ? firstCard.clientWidth + 20 : 320;
+    };
+
+    carouselPrevBtn.addEventListener('click', () => {
+      carouselStrip.scrollBy({ left: -scrollStep(), behavior: 'smooth' });
+    });
+
+    carouselNextBtn.addEventListener('click', () => {
+      carouselStrip.scrollBy({ left: scrollStep(), behavior: 'smooth' });
+    });
+  }
+
+
+
+  // =========================================================================
+  // 5. Contact / Newsletter Form Redirection to WhatsApp (+91 96326 45625)
+  // =========================================================================
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
 
@@ -12,20 +46,32 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('name')?.value.trim() || '';
-      const contact = document.getElementById('email')?.value.trim() || '';
-      const message = document.getElementById('message')?.value.trim() || '';
+      const nameInput = document.getElementById('name');
+      const contactInput = document.getElementById('contactInput');
+      const messageInput = document.getElementById('message');
+      const termsCheckbox = document.getElementById('termsCheckbox');
+
+      if (termsCheckbox && !termsCheckbox.checked) {
+        alert('Please accept the terms to proceed with academic mentorship inquiries.');
+        termsCheckbox.focus();
+        return;
+      }
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const contact = contactInput ? contactInput.value.trim() : '';
+      const message = messageInput ? messageInput.value.trim() : '';
 
       const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.innerHTML : '';
 
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Opening WhatsApp...';
+        submitBtn.innerHTML = 'Connecting to WhatsApp...';
       }
 
-      // Format WhatsApp pre-filled message
+      // Pre-filled WhatsApp message
       const text = encodeURIComponent(
-        `Hello Veerabhadri Sir,\n\nName: ${name}\nContact: ${contact}\nMessage: ${message}`
+        `Hello Veerabhadra Sir,\n\nName: ${name}\nEmail / Phone: ${contact}\nInquiry / Message: ${message}\n\n[Submitted via Veerabhadra S Editorial Portfolio]`
       );
       const whatsappNumber = '919632645625';
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${text}`;
@@ -34,32 +80,84 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.reset();
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Send via WhatsApp →';
+          submitBtn.innerHTML = originalText;
         }
         if (formSuccess) {
           formSuccess.style.display = 'block';
-          formSuccess.innerHTML = `Redirecting to WhatsApp... If it didn't open automatically, <a href="${whatsappUrl}" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 700; text-decoration: underline;">click here to send via WhatsApp</a>.`;
+          formSuccess.innerHTML = `
+            Redirecting to WhatsApp... If it didn't open automatically, 
+            <a href="${whatsappUrl}" target="_blank" rel="noopener" style="text-decoration: underline; font-weight: 700; color: inherit;">
+              click here to send message directly via WhatsApp (+91 96326 45625)
+            </a>.
+          `;
         }
 
-        // Redirect / Open WhatsApp
+        // Open WhatsApp in new tab
         window.open(whatsappUrl, '_blank');
-      }, 400);
+      }, 350);
     });
   }
 
-  // --- Gallery Lightbox Viewer (Natural uncropped ratio, no captions) ---
-  const galleryItems = document.querySelectorAll('.gallery-item');
+  // =========================================================================
+  // 6. Hamburger Menu Drawer (Mobile Navigation)
+  // =========================================================================
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const navMenuMobile = document.getElementById('navMenuMobile');
+
+  if (hamburgerBtn && navMenuMobile) {
+    hamburgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isActive = hamburgerBtn.classList.toggle('active');
+      navMenuMobile.classList.toggle('active', isActive);
+      hamburgerBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    });
+
+    // Close on navigation link click
+    navMenuMobile.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        navMenuMobile.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!navMenuMobile.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        hamburgerBtn.classList.remove('active');
+        navMenuMobile.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenuMobile.classList.contains('active')) {
+        hamburgerBtn.classList.remove('active');
+        navMenuMobile.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // =========================================================================
+  // 7. Lightbox Modal Viewer (Uncropped Natural Aspect Ratio)
+  // =========================================================================
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
   const lightboxPrev = document.getElementById('lightboxPrev');
   const lightboxNext = document.getElementById('lightboxNext');
 
+  const galleryItems = document.querySelectorAll('.gallery-item, .carousel-card');
+
   if (galleryItems.length && lightbox && lightboxImg) {
-    const imageUrls = Array.from(galleryItems).map((item) => {
-      const img = item.querySelector('img');
-      return img ? img.getAttribute('src') : '';
-    }).filter(Boolean);
+    const imageUrls = Array.from(galleryItems)
+      .map((item) => {
+        const img = item.querySelector('img');
+        return img ? img.getAttribute('src') : '';
+      })
+      .filter(Boolean);
 
     let currentIndex = 0;
 
@@ -68,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (index < 0) index = imageUrls.length - 1;
       if (index >= imageUrls.length) index = 0;
       currentIndex = index;
-
       lightboxImg.src = imageUrls[currentIndex];
     }
 
@@ -115,42 +212,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Hamburger Menu (Mobile View) ---
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const navMenu = document.getElementById('navMenu');
+  // =========================================================================
+  // 8. Privacy Policy & Imprint Modal
+  // =========================================================================
+  const legalModal = document.getElementById('legalModal');
+  const legalClose = document.getElementById('legalClose');
+  const legalTriggers = document.querySelectorAll('.legal-modal-trigger');
 
-  if (hamburgerBtn && navMenu) {
-    hamburgerBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isActive = hamburgerBtn.classList.toggle('active');
-      navMenu.classList.toggle('active', isActive);
-      hamburgerBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-    });
-
-    // Close when clicking any nav link
-    navMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        hamburgerBtn.classList.remove('active');
-        navMenu.classList.remove('active');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
+  if (legalModal) {
+    legalTriggers.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        legalModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       });
     });
 
-    // Close when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-        hamburgerBtn.classList.remove('active');
-        navMenu.classList.remove('active');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-      }
+    legalClose?.addEventListener('click', () => {
+      legalModal.classList.remove('active');
+      document.body.style.overflow = '';
     });
 
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-        hamburgerBtn.classList.remove('active');
-        navMenu.classList.remove('active');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
+    legalModal.addEventListener('click', (e) => {
+      if (e.target === legalModal) {
+        legalModal.classList.remove('active');
+        document.body.style.overflow = '';
       }
     });
   }

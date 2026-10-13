@@ -1,222 +1,751 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veerabhadri (Bhadri) | Founder & Academic Mentor, Bhadri's Academy</title>
+  <title>Veerabhadra S | Founder & Academic Mentor, Bhadri's Academy</title>
   
   <link rel="icon" type="image/png" href="assets/images/favicon.png?v=2">
   <link rel="shortcut icon" href="favicon.ico?v=2">
   <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
 
-  <!-- Google Font -->
+  <!-- Google Fonts: Times New Roman Compatible Fallback (Tinos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Times New Roman"', 'Times', 'Tinos', 'Georgia', 'serif'],
+            mono: ['"Times New Roman"', 'Times', 'Tinos', 'Georgia', 'serif'],
+            sans: ['"Times New Roman"', 'Times', 'Tinos', 'Georgia', 'serif'],
+            serif: ['"Times New Roman"', 'Times', 'Tinos', 'Georgia', 'serif'],
+          },
+          colors: {
+            editorialDark: '#080808',
+            surfaceDark: '#121212',
+            cardDark: '#161616',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Bespoke Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="bg-[#080808] text-neutral-100 font-light">
 
-  <!-- Navigation -->
-  <header class="header">
-    <div class="container nav-wrap">
-      <a href="#home" class="brand">
-        <img src="assets/images/logo.png" alt="Veerabhadri" class="brand-icon">
-        <span>Veerabhadri</span>
+  <!-- =========================================================================
+       Navigation & Header
+       Minimalist sticky top bar: Monogram Logo, Links, Dark Toggle, Mobile Drawer
+       ========================================================================= -->
+  <header class="editorial-header">
+    <div class="container-editorial h-20 flex items-center justify-between">
+      
+      <!-- Monogram & Logo in Top-Left Corner -->
+      <a href="#home" class="monogram-badge group">
+        <img src="assets/images/logo.png" alt="Veerabhadra S" class="monogram-avatar">
+        <div class="flex flex-col min-w-0">
+          <div class="flex items-center gap-2">
+            <span class="font-display text-sm tracking-widest text-black dark:text-white uppercase font-medium">Veerabhadra S</span>
+            <span class="text-[10px] font-mono tracking-widest px-1.5 py-0.5 rounded border border-neutral-300 dark:border-neutral-700 uppercase font-normal opacity-75">VS</span>
+          </div>
+          <span class="text-[11px] font-mono tracking-wider text-neutral-500 dark:text-neutral-400 uppercase font-light hidden sm:block">Founder &bull; Bhadri's Academy</span>
+        </div>
       </a>
 
-      <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <!-- Right Header Actions (Center navbar removed) -->
+      <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+        
+        <!-- Direct Get in Touch CTA -->
+        <a href="#contact" class="text-[11px] sm:text-xs font-mono tracking-widest uppercase px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 transition-all font-medium shadow-sm whitespace-nowrap">
+          Get in Touch
+        </a>
 
-      <nav id="navMenu" class="nav-menu">
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#focus">What I Do</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="#contact" class="btn-contact">Get in Touch</a></li>
-        </ul>
-      </nav>
+        <!-- Hamburger Menu Toggle (Universal Desktop & Mobile) -->
+        <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Navigation Drawer (Revealed on hamburger click) -->
+    <div id="navMenuMobile" class="nav-menu-mobile">
+      <div class="container-editorial flex flex-col gap-5 text-center max-w-md mx-auto">
+        <a href="#about" class="text-sm sm:text-base font-mono tracking-widest uppercase font-light text-neutral-800 dark:text-neutral-200 hover:opacity-75 transition-opacity">About</a>
+        <a href="#what-i-do" class="text-sm sm:text-base font-mono tracking-widest uppercase font-light text-neutral-800 dark:text-neutral-200 hover:opacity-75 transition-opacity">What I Do</a>
+        <a href="gallery.html" class="text-sm sm:text-base font-mono tracking-widest uppercase font-light text-neutral-800 dark:text-neutral-200 hover:opacity-75 transition-opacity flex items-center justify-center gap-2">
+          <span>Photo Gallery</span>
+          <span class="text-[10px] bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-300 px-2 py-0.5 rounded-full font-mono font-normal">Photos</span>
+        </a>
+        <a href="#contact" class="mt-2 text-xs font-mono tracking-widest uppercase py-3.5 px-6 rounded-full bg-black text-white dark:bg-white dark:text-black font-medium">
+          Get in Touch &rarr;
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="container hero-grid">
+  <!-- =========================================================================
+       Hero Section
+       Massive, high-impact bold typography with interactive inline photo snippet
+       & Subtitle legacy quote
+       ========================================================================= -->
+  <section id="home" class="relative pt-8 sm:pt-12 md:pt-20 pb-12 sm:pb-16 md:pb-24 overflow-hidden border-b border-neutral-200 dark:border-neutral-800">
+    <div class="container-editorial">
+      
+      <!-- Top Meta Tag / Sub-header -->
+      <div class="flex flex-wrap items-center justify-between gap-3 sm:gap-4 mb-6">
+        <div class="flex items-center gap-2 sm:gap-3">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+          <span class="text-[11px] sm:text-xs font-mono tracking-wider sm:tracking-widest uppercase text-neutral-500 dark:text-neutral-400">
+            Founder &bull; Academic Mentor &bull; Student Counselor
+          </span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-mono text-neutral-400 dark:text-neutral-600">BENGALURU, IN</span>
+        </div>
+      </div>
+
+      <!-- Massive Minimalist Typography with Embedded Dynamic Photo Snippet -->
+      <div class="mb-8 sm:mb-10 text-center md:text-left">
+        <h1 id="heroTypography" class="hero-name-typography">
+          <span class="inline-block font-light">VEERA</span>
+          <!-- Dynamic Inline Photo Snippet embedded dynamically inside typography -->
+          <span class="inline-photo-snippet" title="Veerabhadra S in Action">
+            <img src="assets/images/bhadri-executive-desk.jpg" alt="Veerabhadra S">
+          </span>
+          <span class="inline-block font-light">BHADRA</span>
+          <span class="inline-block ml-1 sm:ml-2 text-neutral-400 dark:text-neutral-500 font-extralight">S</span>
+        </h1>
+      </div>
+
+      <!-- Hero Grid: Legacy Quote & Editorial Image Feature -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-stretch">
+        
+        <!-- Left Column: Legacy Subtitle & Bio Synopsis -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8">
+          
+          <!-- Subtitle text describing the person's legacy -->
+          <div class="legacy-quote-card">
+            <span class="text-xs font-mono tracking-widest uppercase text-neutral-400 dark:text-neutral-500 block mb-2 font-normal">The Guiding Legacy &bull; Core Philosophy</span>
+            <p class="legacy-quote-text font-light">
+              &ldquo;The purpose of life is to serve God, the best way to serve God is by serving His creation ...&rdquo;
+            </p>
+            <div class="mt-4 flex items-center gap-2 text-xs font-mono tracking-wider text-neutral-600 dark:text-neutral-400 font-light">
+              <span class="w-6 h-[1px] bg-neutral-400 dark:bg-neutral-600 inline-block"></span>
+              <span>Veerabhadra S &bull; Founder of Bhadri's Academy</span>
+            </div>
+          </div>
+
+          <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed font-light">
+            Dedicated to reshaping student mentorship through disciplined academic habits, personalized study roadmaps, and transformative counseling. Helping learners eliminate exam anxiety and build lifelong confidence.
+          </p>
+
+          <!-- Action Buttons & Quick Impact Metrics -->
+          <div class="space-y-6 pt-2">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+              <a href="#contact" class="editorial-btn text-center justify-center">
+                Initiate Mentorship &rarr;
+              </a>
+              <a href="gallery.html" class="editorial-btn editorial-btn-outline text-center justify-center">
+                Explore Photo Archive
+              </a>
+            </div>
+
+            <!-- Monochromatic Micro Stats -->
+            <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-6 border-t border-neutral-200 dark:border-neutral-800">
+              <div>
+                <span class="block font-display text-2xl sm:text-4xl font-light text-black dark:text-white">500+</span>
+                <span class="text-[10px] sm:text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider font-light">Students Guided</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl sm:text-4xl font-light text-black dark:text-white">8+ Yrs</span>
+                <span class="text-[10px] sm:text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider font-light">Mentorship</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl sm:text-4xl font-light text-black dark:text-white">100%</span>
+                <span class="text-[10px] sm:text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider font-light">Dedication</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Editorial Portrait Display -->
+        <div class="lg:col-span-5 relative group">
+          <div class="h-full min-h-[300px] sm:min-h-[380px] rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 shadow-xl relative">
+            <img src="assets/images/gallery/IMG_8025.jpg" alt="Veerabhadra S Executive Portrait" class="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 text-white">
+              <span class="text-[11px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full text-white inline-block mb-2 font-normal">
+                Executive Leadership
+              </span>
+              <h3 class="font-display text-lg font-medium tracking-wide">Veerabhadra S</h3>
+              <p class="text-xs text-neutral-300 font-mono font-light">Bhadri's Academy &bull; Bengaluru, Karnataka</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Experience the Pulse - Bold Typography Divider
+       High-contrast scrolling ticker reminiscent of modern electronic artist branding
+       ========================================================================= -->
+  <section class="pulse-divider-wrap" aria-label="Experience the Pulse Banner">
+    <div class="pulse-marquee-track">
+      <div class="pulse-marquee-item">
+        <span>Experience the Pulse</span>
+        <span class="pulse-dot"></span>
+        <span>Academic Rigor</span>
+        <span class="pulse-dot"></span>
+        <span>Personal Discipline</span>
+        <span class="pulse-dot"></span>
+        <span>Visionary Counsel</span>
+        <span class="pulse-dot"></span>
+        <span>Bhadri's Academy</span>
+        <span class="pulse-dot"></span>
+        <span>Bengaluru Roots</span>
+        <span class="pulse-dot"></span>
+      </div>
+      <div class="pulse-marquee-item">
+        <span>Experience the Pulse</span>
+        <span class="pulse-dot"></span>
+        <span>Academic Rigor</span>
+        <span class="pulse-dot"></span>
+        <span>Personal Discipline</span>
+        <span class="pulse-dot"></span>
+        <span>Visionary Counsel</span>
+        <span class="pulse-dot"></span>
+        <span>Bhadri's Academy</span>
+        <span class="pulse-dot"></span>
+        <span>Bengaluru Roots</span>
+        <span class="pulse-dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Platform Badges & Core Pillars
+       Laptops, books, trophies, academy architecture
+       ========================================================================= -->
+  <section id="what-i-do" class="py-20 md:py-28 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-[#0c0c0c]">
+    <div class="container-editorial">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <span class="text-xs font-mono tracking-widest uppercase text-neutral-500 dark:text-neutral-400 block mb-2 font-light">
+            Pillars of Impact &bull; What I Do
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light uppercase tracking-tight text-black dark:text-white">
+            Architecture of Mentorship
+          </h2>
+        </div>
+        <p class="text-neutral-600 dark:text-neutral-400 max-w-md text-sm sm:text-base leading-relaxed font-light">
+          Four foundational pillars engineered to cultivate academic self-reliance, rigorous focus, and lifelong achievement.
+        </p>
+      </div>
+
+      <!-- Platform Badges Grid -->
+      <div class="platform-badges-grid">
+        
+        <!-- Badge 1: Bhadri's Academy (Institutional Leadership) -->
+        <div class="platform-badge-card">
+          <div class="badge-icon-box">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9.5L12 4l9 5.5"/>
+              <path d="M4 10h16"/>
+              <path d="M2 20h20"/>
+              <path d="M4 17h16"/>
+              <path d="M6 10v7"/>
+              <path d="M10 10v7"/>
+              <path d="M14 10v7"/>
+              <path d="M18 10v7"/>
+            </svg>
+          </div>
+          <span class="text-[11px] font-mono tracking-wider uppercase text-neutral-400 dark:text-neutral-500 mb-2 font-light">Institutional Anchor</span>
+          <h3 class="font-display text-lg font-medium mb-2.5 text-black dark:text-white tracking-normal">Bhadri's Academy</h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex-grow font-light">
+            Founding and leading Bhadri's Academy as a dedicated sanctuary where learners discover structured guidance, empathetic encouragement, and disciplined preparation environments.
+          </p>
+          <div class="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-400 font-light">
+            HEADQUARTERS &bull; BENGALURU
+          </div>
+        </div>
+
+        <!-- Badge 2: Books / Structured Curriculum -->
+        <div class="platform-badge-card">
+          <div class="badge-icon-box">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              <line x1="6" y1="8" x2="8" y2="8"/>
+              <line x1="6" y1="12" x2="8" y2="12"/>
+              <line x1="16" y1="8" x2="18" y2="8"/>
+              <line x1="16" y1="12" x2="18" y2="12"/>
+            </svg>
+          </div>
+          <span class="text-[11px] font-mono tracking-wider uppercase text-neutral-400 dark:text-neutral-500 mb-2 font-light">Core Knowledge</span>
+          <h3 class="font-display text-lg font-medium mb-2.5 text-black dark:text-white tracking-normal">Structured Study Roadmaps</h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex-grow font-light">
+            Cultivating genuine conceptual depth and disciplined reading habits, moving students away from superficial rote memorization into strategic subject comprehension.
+          </p>
+          <div class="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-400 font-light">
+            FOUNDATIONAL CLARITY
+          </div>
+        </div>
+
+        <!-- Badge 3: Laptops / Smart Systems & Mentorship -->
+        <div class="platform-badge-card">
+          <div class="badge-icon-box">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="12" rx="2"/>
+              <line x1="2" y1="20" x2="22" y2="20"/>
+              <line x1="9" y1="16" x2="15" y2="16"/>
+            </svg>
+          </div>
+          <span class="text-[11px] font-mono tracking-wider uppercase text-neutral-400 dark:text-neutral-500 mb-2 font-light">Personalized Systems</span>
+          <h3 class="font-display text-lg font-medium mb-2.5 text-black dark:text-white tracking-normal">1-on-1 Student Mentorship</h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex-grow font-light">
+            Working directly with individual students to diagnose study bottlenecks, engineer effective revision timelines, and maintain steady weekly progress milestones.
+          </p>
+          <div class="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-400 font-light">
+            PERSONALIZED ATTENTION
+          </div>
+        </div>
+
+        <!-- Badge 4: Trophies / Mindset & Proven Outcomes -->
+        <div class="platform-badge-card">
+          <div class="badge-icon-box">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 21h8"/>
+              <path d="M12 17v4"/>
+              <path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/>
+              <path d="M7 6H4a2 2 0 0 0-2 2v1a4 4 0 0 0 4 4h1"/>
+              <path d="M17 6h3a2 2 0 0 1 2 2v1a4 4 0 0 1-4 4h-1"/>
+            </svg>
+          </div>
+          <span class="text-[11px] font-mono tracking-wider uppercase text-neutral-400 dark:text-neutral-500 mb-2 font-light">Excellence & Resilience</span>
+          <h3 class="font-display text-lg font-medium mb-2.5 text-black dark:text-white tracking-normal">Exam Mindset Counseling</h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex-grow font-light">
+            Guiding students through mental endurance training, managing high-stakes exam stress, and transforming self-doubt into calm, decisive execution.
+          </p>
+          <div class="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-400 font-light">
+            PROVEN TRACK RECORD
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Interactive Gallery & Video Archive
+       Curated photo carousel + Embedded video visualizer with custom player styling
+       ========================================================================= -->
+  <section class="py-20 md:py-28 border-b border-neutral-200 dark:border-neutral-800">
+    <div class="container-editorial">
+      
+      <!-- Section Header with Direct Link to Full Gallery -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-mono tracking-widest uppercase text-neutral-500 dark:text-neutral-400 block mb-2 font-light">
+            Visual Documentation &bull; Curated Highlights
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light uppercase tracking-tight text-black dark:text-white">
+            Curated Photo Archive
+          </h2>
+        </div>
+        <div>
+          <a href="gallery.html" class="editorial-btn text-xs">
+            Open Full 19-Photo Archive &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Curated Photo Carousel Strip -->
       <div>
-        <span class="tagline-chip">Founder &bull; Academic Mentor &bull; Student Counselor</span>
-        <h1>Empowering Students to Achieve Academic Excellence & Growth.</h1>
-        <p>
-          I am <strong>Veerabhadri (Bhadri)</strong>, founder of <strong>Bhadri's Academy</strong>. I mentor students to build disciplined study habits, overcome academic hurdles, and unlock their highest potential through personalized guidance.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Connect with Me</a>
-        </div>
-      </div>
-
-      <div class="hero-img-wrap">
-        <img src="assets/images/bhadri-executive-desk.jpg" alt="Veerabhadri at desk">
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <h2>About Me</h2>
-        <p>Dedicated to guiding, motivating, and counseling students.</p>
-      </div>
-
-      <div class="about-text">
-        <p>
-          Over the past 8+ years, I have dedicated myself to student mentorship and educational leadership. Every learner possesses distinct strengths, but many struggle with self-doubt, exam pressure, and a lack of clear direction.
-        </p>
-        <p>
-          As the founder of <strong>Bhadri's Academy</strong>, I believe impactful mentorship goes far beyond rote coursework. My focus is on understanding each student's unique learning curve, instilling consistency and self-belief, and providing the strategic roadmaps they need to succeed.
-        </p>
-      </div>
-
-      <div class="stats-row">
-        <div class="stat-item">
-          <h3>500+</h3>
-          <span>Students Mentored</span>
-        </div>
-        <div class="stat-item">
-          <h3>5+</h3>
-          <span>Years of Mentorship</span>
-        </div>
-        <div class="stat-item">
-          <h3>100%</h3>
-          <span>Personalized Attention</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What I Do Section -->
-  <section id="focus" class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>What I Do</h2>
-        <p>Core areas of mentorship and academic leadership.</p>
-      </div>
-
-      <div class="cards-grid">
-        <div class="card">
-          <div class="card-icon">🏛️</div>
-          <h3>Bhadri's Academy</h3>
-          <p>
-            Leading and growing Bhadri's Academy as an educational institution dedicated to providing students with an encouraging environment, structured guidance, and holistic academic support.
-          </p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest font-light">
+            Slide to inspect featured moments
+          </span>
+          <div class="flex items-center gap-2">
+            <button id="carouselPrev" class="carousel-nav-btn" aria-label="Previous image">
+              &#10094;
+            </button>
+            <button id="carouselNext" class="carousel-nav-btn" aria-label="Next image">
+              &#10095;
+            </button>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="card-icon">🎯</div>
-          <h3>1-on-1 Student Mentorship</h3>
-          <p>
-            Working individually with students to identify learning bottlenecks, optimize study schedules, and build long-term academic discipline.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🧠</div>
-          <h3>Mindset & Exam Counseling</h3>
-          <p>
-            Helping students manage academic stress and anxiety, build mental resilience, and develop calm, strategic approaches toward high-stakes examinations.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🎙️</div>
-          <h3>Seminars & Youth Workshops</h3>
-          <p>
-            Conducting motivational sessions and career guidance workshops for schools and institutions, inspiring young minds to pursue their ambitions with confidence.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Get in Touch</h2>
-        <p>Whether you have a question about mentorship, academy guidance, or collaborations, feel free to reach out.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">📱</div>
-            <div>
-              <div class="contact-label">WhatsApp</div>
-              <div class="contact-val">
-                <a href="https://wa.me/919632645625" target="_blank" rel="noopener">+91 96326 45625</a>
+        <div class="carousel-viewport">
+          <div id="carouselStrip" class="carousel-strip">
+            
+            <div class="carousel-card">
+              <img src="assets/images/gallery/IMG_8111.jpg" alt="Mentorship Session" class="carousel-card-img" loading="lazy">
+              <div class="p-4 bg-white dark:bg-cardDark border-t border-neutral-100 dark:border-neutral-800">
+                <span class="text-[11px] font-mono uppercase text-neutral-400 block font-light">Momentum</span>
+                <span class="font-medium text-xs tracking-wider uppercase text-neutral-800 dark:text-neutral-200">Academy Leadership</span>
               </div>
             </div>
-          </div>
 
-          <div class="contact-item">
-            <div class="contact-icon">✉️</div>
-            <div>
-              <div class="contact-label">Email</div>
-              <div class="contact-val">
-                <a href="mailto:contact@veerabhadri.com">contact@veerabhadri.com</a>
+            <div class="carousel-card">
+              <img src="assets/images/gallery/IMG_8143.jpg" alt="Student Interaction" class="carousel-card-img" loading="lazy">
+              <div class="p-4 bg-white dark:bg-cardDark border-t border-neutral-100 dark:border-neutral-800">
+                <span class="text-[11px] font-mono uppercase text-neutral-400 block font-light">Dialogue</span>
+                <span class="font-medium text-xs tracking-wider uppercase text-neutral-800 dark:text-neutral-200">1-on-1 Guidance</span>
               </div>
             </div>
+
+            <div class="carousel-card">
+              <img src="assets/images/gallery/IMG_8074.jpg" alt="Classroom Focus" class="carousel-card-img" loading="lazy">
+              <div class="p-4 bg-white dark:bg-cardDark border-t border-neutral-100 dark:border-neutral-800">
+                <span class="text-[11px] font-mono uppercase text-neutral-400 block font-light">Focus</span>
+                <span class="font-medium text-xs tracking-wider uppercase text-neutral-800 dark:text-neutral-200">Interactive Address</span>
+              </div>
+            </div>
+
+            <div class="carousel-card">
+              <img src="assets/images/gallery/IMG_8159.jpg" alt="Counseling Desk" class="carousel-card-img" loading="lazy">
+              <div class="p-4 bg-white dark:bg-cardDark border-t border-neutral-100 dark:border-neutral-800">
+                <span class="text-[11px] font-mono uppercase text-neutral-400 block font-light">Counsel</span>
+                <span class="font-medium text-xs tracking-wider uppercase text-neutral-800 dark:text-neutral-200">Strategic Roadmap</span>
+              </div>
+            </div>
+
+            <div class="carousel-card">
+              <img src="assets/images/gallery/IMG_8098.jpg" alt="Youth Motivation" class="carousel-card-img" loading="lazy">
+              <div class="p-4 bg-white dark:bg-cardDark border-t border-neutral-100 dark:border-neutral-800">
+                <span class="text-[11px] font-mono uppercase text-neutral-400 block font-light">Energy</span>
+                <span class="font-medium text-xs tracking-wider uppercase text-neutral-800 dark:text-neutral-200">Youth Seminar</span>
+              </div>
+            </div>
+
+            <div class="carousel-card">
+              <img src="assets/images/gallery/IMG_8174.jpg" alt="Executive Discussion" class="carousel-card-img" loading="lazy">
+              <div class="p-4 bg-white dark:bg-cardDark border-t border-neutral-100 dark:border-neutral-800">
+                <span class="text-[11px] font-mono uppercase text-neutral-400 block font-light">Vision</span>
+                <span class="font-medium text-xs tracking-wider uppercase text-neutral-800 dark:text-neutral-200">Future Perspectives</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Life Works / Bio
+       Concise storytelling block celebrating Bengaluru origins & impact
+       ========================================================================= -->
+  <section id="about" class="py-20 md:py-28 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-[#0c0c0c]">
+    <div class="container-editorial">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Bengaluru Origins Storytelling -->
+        <div class="lg:col-span-7 space-y-6">
+          <span class="text-xs font-mono tracking-widest uppercase text-neutral-500 dark:text-neutral-400 block font-light">
+            Origins &bull; Life Works &bull; Bengaluru, India
+          </span>
+
+          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light uppercase tracking-tight text-black dark:text-white">
+            Rooted in Bengaluru. Dedicated to Student Growth.
+          </h2>
+
+          <div class="space-y-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed font-light">
+            <p>
+              Born and nurtured in Bengaluru, <strong class="font-normal text-black dark:text-white">Veerabhadra S (Bhadri)</strong> witnessed firsthand how bright, ambitious students often stumbled not from a lack of capability, but from the absence of personalized direction, exam intimidation, and unstructured routines.
+            </p>
+            <p>
+              Driven by the conviction that education is an act of service, he established <strong class="font-normal text-black dark:text-white">Bhadri's Academy</strong>. Over 8+ years, his mentorship model has bridged the gap between raw potential and sustained academic clarity, counseling over 500 students through rigorous, empathetic support.
+            </p>
+            <p class="text-sm font-light text-neutral-500 dark:text-neutral-400">
+              He focuses on fundamental academic discipline, time management systems, and emotional fortitude &mdash; guiding students to thrive calmly under academic pressure.
+            </p>
           </div>
 
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
+          <!-- Milestones Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-neutral-200 dark:border-neutral-800">
             <div>
-              <div class="contact-label">Academy Location</div>
-              <div class="contact-val">
-                Bhadri's Academy<br>
-                Bangalore / Karnataka, India
-              </div>
+              <span class="block font-display text-3xl font-light tracking-tight text-black dark:text-white">8+</span>
+              <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-light">Years Experience</span>
+            </div>
+            <div>
+              <span class="block font-display text-3xl font-light tracking-tight text-black dark:text-white">500+</span>
+              <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-light">Mentees Guided</span>
+            </div>
+            <div>
+              <span class="block font-display text-3xl font-light tracking-tight text-black dark:text-white">100%</span>
+              <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-light">Personalized Focus</span>
+            </div>
+            <div>
+              <span class="block font-display text-3xl font-light tracking-tight text-black dark:text-white">B'lore</span>
+              <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-light">Academy Base</span>
             </div>
           </div>
         </div>
 
-        <form id="contactForm" class="simple-form">
-          <div id="formSuccess" class="form-success"></div>
-
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" required placeholder="Your full name">
+        <!-- Right: Editorial Image Composition -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="relative rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-xl">
+            <img src="assets/images/gallery/IMG_8036.jpg" alt="Veerabhadra S in Deep Thought" class="w-full h-80 sm:h-96 object-cover object-top filter grayscale hover:grayscale-0 transition-all duration-700">
+            <div class="absolute bottom-4 left-4 right-4 bg-white/90 dark:bg-black/90 backdrop-blur-md p-4 rounded-xl border border-neutral-200 dark:border-neutral-800">
+              <span class="text-[11px] font-mono uppercase text-neutral-500 dark:text-neutral-400 block font-light">Philosophy in Action</span>
+              <p class="text-xs font-light text-neutral-800 dark:text-neutral-200">
+                &ldquo;Every student possesses distinct potential. Our duty is to unlock it with patience, discipline, and sincere guidance.&rdquo;
+              </p>
+            </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="email">Email or Phone</label>
-            <input type="text" id="email" required placeholder="How to reach you">
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" rows="3" required placeholder="How can I help you?"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer; justify-content: center;">
-            Send via WhatsApp &rarr;
-          </button>
-        </form>
       </div>
+
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 Veerabhadri (Bhadri) &bull; Founder of Bhadri's Academy. All rights reserved.</p>
+  <!-- =========================================================================
+       Newsletter / Get in Touch Section
+       High-conversion form with multi-image background ticker/grid
+       Redirects submissions directly to WhatsApp (+91 96326 45625)
+       ========================================================================= -->
+  <section id="contact" class="py-20 md:py-28 border-b border-neutral-200 dark:border-neutral-800">
+    <div class="container-editorial">
+      
+      <div class="newsletter-hero-box">
+        
+        <!-- Multi-image background ticker/grid mosaic -->
+        <div class="newsletter-backdrop-mosaic">
+          <img src="assets/images/gallery/IMG_7960.jpg" alt="Background mosaic 1" loading="lazy">
+          <img src="assets/images/gallery/IMG_8051.jpg" alt="Background mosaic 2" loading="lazy">
+          <img src="assets/images/gallery/IMG_8092.jpg" alt="Background mosaic 3" loading="lazy">
+          <img src="assets/images/gallery/IMG_8113.jpg" alt="Background mosaic 4" loading="lazy">
+        </div>
+
+        <!-- High-Conversion Content & Form -->
+        <div class="newsletter-card-content">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- Left Info Block -->
+            <div class="lg:col-span-5 flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-mono tracking-widest uppercase text-neutral-500 dark:text-neutral-400 block mb-3 font-light">
+                  Direct Line &bull; Academic Counseling
+                </span>
+                <h2 class="font-display text-3xl sm:text-4xl font-light uppercase tracking-tight text-black dark:text-white mb-4">
+                  Initiate Dialogue
+                </h2>
+                <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed font-light mb-8">
+                  Whether you are seeking 1-on-1 student counseling, academy admission guidance, or seminar inquiries for your institution, connect directly with Veerabhadra S.
+                </p>
+
+                <!-- Direct Credentials -->
+                <div class="space-y-4 text-xs font-mono">
+                  <div class="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
+                    <span class="w-8 h-8 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center font-normal text-[11px]">WA</span>
+                    <span>
+                      WhatsApp: <a href="https://wa.me/919632645625" target="_blank" rel="noopener" class="underline font-medium hover:text-black dark:hover:text-white">+91 96326 45625</a>
+                    </span>
+                  </div>
+                  <div class="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
+                    <span class="w-8 h-8 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center font-normal text-[11px]">HQ</span>
+                    <span class="font-light">Bhadri's Academy, Bengaluru, Karnataka, India</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
+                    <span class="w-8 h-8 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center font-normal text-[11px]">EM</span>
+                    <span class="font-light">contact@veerabhadri.com</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-neutral-200 dark:border-neutral-800 text-xs font-mono text-neutral-400 font-light">
+                Direct encrypted response via WhatsApp application.
+              </div>
+            </div>
+
+            <!-- Right High-Conversion Form -->
+            <div class="lg:col-span-7">
+              <form id="contactForm" class="bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md p-5 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-4">
+                
+                <div id="formSuccess" class="hidden p-4 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-black dark:text-white text-xs font-mono border border-neutral-300 dark:border-neutral-700"></div>
+
+                <div class="space-y-1">
+                  <label for="name" class="block text-xs font-mono uppercase tracking-wider text-neutral-600 dark:text-neutral-300">Your Full Name</label>
+                  <input type="text" id="name" required placeholder="e.g. Ramesh Kumar" class="editorial-input">
+                </div>
+
+                <div class="space-y-1">
+                  <label for="contactInput" class="block text-xs font-mono uppercase tracking-wider text-neutral-600 dark:text-neutral-300">Email Address or Phone Number</label>
+                  <input type="text" id="contactInput" required placeholder="e.g. ramesh@gmail.com or +91 98765 43210" class="editorial-input">
+                </div>
+
+                <div class="space-y-1">
+                  <label for="message" class="block text-xs font-mono uppercase tracking-wider text-neutral-600 dark:text-neutral-300">Mentorship Inquiry or Message</label>
+                  <textarea id="message" rows="3" required placeholder="Briefly describe what academic guidance or counseling you are looking for..." class="editorial-input editorial-textarea"></textarea>
+                </div>
+
+                <!-- Terms Acceptance -->
+                <label class="terms-checkbox-wrap">
+                  <input type="checkbox" id="termsCheckbox" required checked>
+                  <span>
+                    I agree to terms & consent to direct academic counseling communication via WhatsApp (+91 96326 45625).
+                  </span>
+                </label>
+
+                <!-- Submit Button -->
+                <button type="submit" class="editorial-btn w-full text-center mt-2 py-3.5 px-3 text-xs sm:text-sm">
+                  <span>Send via WhatsApp (+91 96326 45625)</span>
+                  <span>&rarr;</span>
+                </button>
+
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Structured Footer
+       Columns for Links, Support, Handles, Copyright & Imprint
+       ========================================================================= -->
+  <footer class="footer-structured">
+    <div class="container-editorial">
+      
+      <div class="footer-columns-grid">
+        
+        <!-- Col 1: Brand & Legacy -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="assets/images/logo.png" alt="Veerabhadra S" class="w-9 h-9 rounded-full border border-black dark:border-white">
+            <span class="font-display font-medium uppercase text-base text-black dark:text-white tracking-widest">Veerabhadra S</span>
+          </div>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed mb-4 font-light">
+            Founder of Bhadri's Academy. Dedicated academic mentor & student counselor based in Bengaluru, empowering youth toward structured academic excellence.
+          </p>
+          <span class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 uppercase tracking-widest block font-light">
+            EST. BENGALURU, INDIA
+          </span>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links-list font-light">
+            <li><a href="#home">Home Base</a></li>
+            <li><a href="#about">About & Legacy</a></li>
+            <li><a href="#what-i-do">What I Do</a></li>
+            <li><a href="gallery.html">Photo Archive (19 Photos)</a></li>
+            <li><a href="#contact">Get in Touch</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Mentorship & Support -->
+        <div>
+          <h4 class="footer-col-title">Mentorship Services</h4>
+          <ul class="footer-links-list font-light">
+            <li><a href="#contact">1-on-1 Student Counseling</a></li>
+            <li><a href="#contact">Bhadri's Academy Inquiries</a></li>
+            <li><a href="#contact">Exam Mindset Preparation</a></li>
+            <li><a href="#contact">Institutional Seminars</a></li>
+            <li><a href="https://wa.me/919632645625" target="_blank" rel="noopener">Direct WhatsApp Desk</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Handles & Contact -->
+        <div>
+          <h4 class="footer-col-title">Connect & Location</h4>
+          <ul class="footer-links-list font-light">
+            <li>
+              <a href="https://wa.me/919632645625" target="_blank" rel="noopener" class="font-mono text-xs">
+                WhatsApp: +91 96326 45625
+              </a>
+            </li>
+            <li>
+              <a href="mailto:contact@veerabhadri.com" class="font-mono text-xs">
+                contact@veerabhadri.com
+              </a>
+            </li>
+            <li class="text-xs text-neutral-500 dark:text-neutral-400 font-mono font-light">
+              Bhadri's Academy<br>
+              Bengaluru, Karnataka, India
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Row: Copyright & Legal -->
+      <div class="footer-bottom-row font-light">
+        <div>
+          &copy; 2026 Veerabhadra S &bull; Founder of Bhadri's Academy. All rights reserved.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="legal-modal-trigger hover:text-black dark:hover:text-white transition-colors">Privacy Policy</a>
+          <span>&bull;</span>
+          <a href="#" class="legal-modal-trigger hover:text-black dark:hover:text-white transition-colors">Imprint & Terms</a>
+        </div>
+      </div>
+
     </div>
   </footer>
 
+  <!-- =========================================================================
+       Privacy Policy & Imprint Modal
+       ========================================================================= -->
+  <div id="legalModal" class="lightbox" role="dialog" aria-modal="true" aria-label="Legal Information">
+    <div class="bg-white dark:bg-[#141414] text-black dark:text-white p-8 max-w-lg rounded-2xl border border-neutral-300 dark:border-neutral-700 relative shadow-2xl">
+      <button id="legalClose" class="absolute top-4 right-4 text-2xl font-light leading-none cursor-pointer">&times;</button>
+      <h3 class="font-display text-lg font-medium uppercase tracking-wider mb-4">Privacy Policy & Imprint</h3>
+      <div class="space-y-3 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed font-light">
+        <p>
+          <strong>Data Privacy:</strong> Student confidentiality is paramount. Information submitted through the contact desk is used exclusively for academic mentorship communication and counseling support.
+        </p>
+        <p>
+          <strong>WhatsApp Communication:</strong> Inquiries are transmitted directly to WhatsApp (+91 96326 45625) using standard end-to-end encryption protocols.
+        </p>
+        <p>
+          <strong>Institution:</strong> Bhadri's Academy, Bengaluru, Karnataka, India. Directed by Veerabhadra S.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal for Photo Preview -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo Preview">
+    <div class="lightbox-content">
+      <button id="lightboxClose" class="lightbox-close" aria-label="Close preview">&times;</button>
+      <button id="lightboxPrev" class="lightbox-btn lightbox-prev" aria-label="Previous photo">&#10094;</button>
+      <button id="lightboxNext" class="lightbox-btn lightbox-next" aria-label="Next photo">&#10095;</button>
+      <img id="lightboxImg" class="lightbox-img" src="" alt="Enlarged photo">
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>

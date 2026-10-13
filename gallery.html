@@ -1,144 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery | Veerabhadri (Bhadri) - Academic Mentor</title>
+  <title>Curated Photo Archive | Veerabhadra S - Academic Mentor</title>
   
   <link rel="icon" type="image/png" href="assets/images/favicon.png?v=2">
   <link rel="shortcut icon" href="favicon.ico?v=2">
   <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
 
-  <!-- Google Font -->
+  <!-- Google Fonts: Times New Roman Compatible Fallback (Tinos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Times New Roman"', 'Times', 'Tinos', 'Georgia', 'serif'],
+            mono: ['"Times New Roman"', 'Times', 'Tinos', 'Georgia', 'serif'],
+            sans: ['"Times New Roman"', 'Times', 'Tinos', 'Georgia', 'serif'],
+            serif: ['"Times New Roman"', 'Times', 'Tinos', 'Georgia', 'serif'],
+          },
+          colors: {
+            editorialDark: '#080808',
+            surfaceDark: '#121212',
+            cardDark: '#161616',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Bespoke Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="bg-[#080808] text-neutral-100 font-light">
 
-  <!-- Navigation -->
-  <header class="header">
-    <div class="container nav-wrap">
-      <a href="index.html" class="brand">
-        <img src="assets/images/logo.png" alt="Veerabhadri" class="brand-icon">
-        <span>Veerabhadri</span>
+  <!-- =========================================================================
+       Navigation & Header
+       ========================================================================= -->
+  <header class="editorial-header">
+    <div class="container-editorial h-20 flex items-center justify-between">
+      
+      <!-- Monogram & Logo in Top-Left Corner -->
+      <a href="index.html" class="monogram-badge group">
+        <img src="assets/images/logo.png" alt="Veerabhadra S" class="monogram-avatar">
+        <div class="flex flex-col min-w-0">
+          <div class="flex items-center gap-2">
+            <span class="font-display text-sm tracking-widest text-black dark:text-white uppercase font-medium">Veerabhadra S</span>
+            <span class="text-[10px] font-mono tracking-widest px-1.5 py-0.5 rounded border border-neutral-300 dark:border-neutral-700 uppercase font-normal opacity-75">VS</span>
+          </div>
+          <span class="text-[11px] font-mono tracking-wider text-neutral-500 dark:text-neutral-400 uppercase font-light hidden sm:block">Founder &bull; Bhadri's Academy</span>
+        </div>
       </a>
 
-      <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <!-- Right Header Actions (Center navbar removed) -->
+      <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+        
+        <!-- Direct Return to Home CTA -->
+        <a href="index.html" class="text-[11px] sm:text-xs font-mono tracking-widest uppercase px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 transition-all font-medium shadow-sm whitespace-nowrap">
+          <span class="hidden sm:inline">&larr; Back to Home</span>
+          <span class="sm:hidden">&larr; Home</span>
+        </a>
 
-      <nav id="navMenu" class="nav-menu">
-        <ul class="nav-links">
-          <li><a href="index.html">← Back to Home</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#focus">What I Do</a></li>
-          <li><a href="index.html#contact" class="btn-contact">Get in Touch</a></li>
-        </ul>
-      </nav>
+        <!-- Hamburger Menu Toggle (Universal Desktop & Mobile) -->
+        <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Navigation Drawer (Revealed on hamburger click) -->
+    <div id="navMenuMobile" class="nav-menu-mobile">
+      <div class="container-editorial flex flex-col gap-5 text-center max-w-md mx-auto">
+        <a href="index.html" class="text-sm sm:text-base font-mono tracking-widest uppercase font-light text-neutral-800 dark:text-neutral-200 hover:opacity-75 transition-opacity">&larr; Back to Home</a>
+        <a href="index.html#about" class="text-sm sm:text-base font-mono tracking-widest uppercase font-light text-neutral-800 dark:text-neutral-200 hover:opacity-75 transition-opacity">About</a>
+        <a href="index.html#what-i-do" class="text-sm sm:text-base font-mono tracking-widest uppercase font-light text-neutral-800 dark:text-neutral-200 hover:opacity-75 transition-opacity">What I Do</a>
+        <a href="index.html#contact" class="mt-2 text-xs font-mono tracking-widest uppercase py-3.5 px-6 rounded-full bg-black text-white dark:bg-white dark:text-black font-medium">
+          Get in Touch &rarr;
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- Gallery Header -->
-  <section class="section" style="padding-bottom: 2rem;">
-    <div class="container">
-      <div class="section-head" style="margin-bottom: 1.5rem;">
-        <span class="tagline-chip">Photo Gallery</span>
-        <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">Moments in Action</h1>
-        <p>Glimpses from academy leadership, interactive sessions, and student mentorship.</p>
-        <div style="margin-top: 1.25rem;">
-          <a href="index.html" class="btn btn-outline" style="font-size: 0.88rem; padding: 0.5rem 1.1rem;">
+  <!-- =========================================================================
+       Gallery Header Section
+       ========================================================================= -->
+  <section class="pt-12 pb-10 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-[#0c0c0c]">
+    <div class="container-editorial">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div class="flex items-center gap-2 sm:gap-3 mb-3">
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+            <span class="text-[11px] sm:text-xs font-mono tracking-wider sm:tracking-widest uppercase text-neutral-500 dark:text-neutral-400 font-light">
+              Complete Photographic Archive &bull; 19 Plates
+            </span>
+          </div>
+          <h1 class="font-display text-3xl sm:text-5xl md:text-6xl font-light uppercase tracking-tight text-black dark:text-white">
+            Moments in Action
+          </h1>
+          <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-2 max-w-xl font-light">
+            High-resolution visual catalog spanning executive portraits, classroom mentorship dialogues, academy leadership, and youth seminars. Click any photograph to view uncropped in high-resolution lightbox.
+          </p>
+        </div>
+
+        <div>
+          <a href="index.html" class="editorial-btn editorial-btn-outline text-xs w-full sm:w-auto text-center justify-center">
             &larr; Back to Home Page
           </a>
-        </div>
-      </div>
-
-      <!-- Natural Aspect Ratio Masonry - No Captions -->
-      <div class="gallery-masonry">
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_7960.jpg" alt="Gallery Photo 1" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_7996.jpg" alt="Gallery Photo 2" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8025.jpg" alt="Gallery Photo 3" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8036.jpg" alt="Gallery Photo 4" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8051.jpg" alt="Gallery Photo 5" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8055.jpg" alt="Gallery Photo 6" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8069.jpg" alt="Gallery Photo 7" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8074.jpg" alt="Gallery Photo 8" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8078.jpg" alt="Gallery Photo 9" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8092.jpg" alt="Gallery Photo 10" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8098.jpg" alt="Gallery Photo 11" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8111.jpg" alt="Gallery Photo 12" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8113.jpg" alt="Gallery Photo 13" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8139.jpg" alt="Gallery Photo 14" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8143.jpg" alt="Gallery Photo 15" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8149.jpg" alt="Gallery Photo 16" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8155.jpg" alt="Gallery Photo 17" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8159.jpg" alt="Gallery Photo 18" loading="lazy">
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/images/gallery/IMG_8174.jpg" alt="Gallery Photo 19" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Lightbox Modal -->
+  <!-- =========================================================================
+       Natural Aspect Ratio Masonry Gallery (All 19 Images, Zero Captions)
+       ========================================================================= -->
+  <section class="py-16 md:py-24">
+    <div class="container-editorial">
+      
+      <div class="gallery-masonry">
+        
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_7960.jpg" alt="Gallery Photo 1" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_7996.jpg" alt="Gallery Photo 2" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8025.jpg" alt="Gallery Photo 3" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8036.jpg" alt="Gallery Photo 4" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8051.jpg" alt="Gallery Photo 5" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8055.jpg" alt="Gallery Photo 6" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8069.jpg" alt="Gallery Photo 7" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8074.jpg" alt="Gallery Photo 8" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8078.jpg" alt="Gallery Photo 9" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8092.jpg" alt="Gallery Photo 10" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8098.jpg" alt="Gallery Photo 11" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8111.jpg" alt="Gallery Photo 12" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8113.jpg" alt="Gallery Photo 13" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8139.jpg" alt="Gallery Photo 14" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8143.jpg" alt="Gallery Photo 15" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8149.jpg" alt="Gallery Photo 16" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8155.jpg" alt="Gallery Photo 17" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8159.jpg" alt="Gallery Photo 18" loading="lazy">
+        </div>
+
+        <div class="gallery-item" title="Click to view full size">
+          <img src="assets/images/gallery/IMG_8174.jpg" alt="Gallery Photo 19" loading="lazy">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Lightbox Modal (Natural Aspect Ratio Viewer)
+       ========================================================================= -->
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo Preview">
     <div class="lightbox-content">
       <button id="lightboxClose" class="lightbox-close" aria-label="Close preview">&times;</button>
@@ -148,16 +224,25 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>
-        &copy; 2026 Veerabhadri (Bhadri) &bull; Founder of Bhadri's Academy. 
-        <a href="index.html" style="color: var(--primary); font-weight: 600; margin-left: 0.5rem;">&larr; Back to Home</a>
-      </p>
+  <!-- =========================================================================
+       Structured Footer
+       ========================================================================= -->
+  <footer class="footer-structured">
+    <div class="container-editorial">
+      <div class="footer-bottom-row font-light" style="border-top: none; padding-top: 0;">
+        <div>
+          &copy; 2026 Veerabhadra S &bull; Founder of Bhadri's Academy. All rights reserved.
+        </div>
+        <div>
+          <a href="index.html" class="hover:text-black dark:hover:text-white transition-colors font-mono text-xs">
+            &larr; Return to Home Page
+          </a>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <!-- Main JavaScript File -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>
