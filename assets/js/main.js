@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // =========================================================================
-  // 3. Curated Photo Carousel Navigation
+  // 3. Curated Photo Carousel & Mobile Strategy Slide Cards Navigation
   // =========================================================================
   const carouselStrip = document.getElementById('carouselStrip');
   const carouselPrevBtn = document.getElementById('carouselPrev');
@@ -31,6 +31,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     carouselNextBtn.addEventListener('click', () => {
       carouselStrip.scrollBy({ left: scrollStep(), behavior: 'smooth' });
+    });
+  }
+
+  // Mobile-Only Strategy Slide Cards Navigation
+  const strategiesTrack = document.getElementById('strategiesTrack');
+  const strategiesPrevBtn = document.getElementById('strategiesPrev');
+  const strategiesNextBtn = document.getElementById('strategiesNext');
+
+  if (strategiesTrack && strategiesPrevBtn && strategiesNextBtn) {
+    const strategyStep = () => {
+      const firstSlide = strategiesTrack.querySelector('.strategy-slide-card');
+      return firstSlide ? firstSlide.clientWidth + 16 : 260;
+    };
+
+    strategiesPrevBtn.addEventListener('click', () => {
+      strategiesTrack.scrollBy({ left: -strategyStep(), behavior: 'smooth' });
+    });
+
+    strategiesNextBtn.addEventListener('click', () => {
+      strategiesTrack.scrollBy({ left: strategyStep(), behavior: 'smooth' });
     });
   }
 
